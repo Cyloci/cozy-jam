@@ -4,10 +4,10 @@
 [ext_resource path="res://Player.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 4.38121
-height = 2.6922
+radius = 3.9744
+height = 0.997112
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "WalkBack"
 length = 0.4
 loop = true
@@ -24,8 +24,7 @@ tracks/0/keys = {
 "values": [ 2, 3 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "WalkFront"
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -41,8 +40,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "WalkLeft"
+[sub_resource type="Animation" id=4]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -58,8 +56,7 @@ tracks/0/keys = {
 "values": [ 6, 7 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "WalkRight"
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -76,7 +73,6 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 0, -6.5 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -84,12 +80,9 @@ position = Vector2( -0.5, 0 )
 texture = ExtResource( 1 )
 hframes = 8
 frame = 4
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.0787506, 2.35181 )
+position = Vector2( 0.0291443, 3.39354 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -97,7 +90,7 @@ current = true
 zoom = Vector2( 0.3, 0.3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/WalkBack = SubResource( 5 )
-anims/WalkFront = SubResource( 2 )
-anims/WalkLeft = SubResource( 3 )
-anims/WalkRight = SubResource( 4 )
+anims/WalkBack = SubResource( 2 )
+anims/WalkFront = SubResource( 3 )
+anims/WalkLeft = SubResource( 4 )
+anims/WalkRight = SubResource( 5 )
