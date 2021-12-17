@@ -22,6 +22,6 @@ func get_input():
 	velocity = velocity.normalized() * speed
 	$AnimationPlayer.play("Walk" + direction)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	get_input()
 	velocity = move_and_slide(velocity)
