@@ -88,6 +88,8 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
+smoothing_speed = 7.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/WalkBack = SubResource( 2 )
