@@ -1,0 +1,192 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/snowman-sprite.png" type="Texture" id=2]
+[ext_resource path="res://assets/audio/fs_snow-04.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/fs_snow-01.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/fs_snow-06.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/fs_snow-02.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/fs_snow-05.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/fs_snow-03.wav" type="AudioStream" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.9744
+height = 0.997112
+
+[sub_resource type="Animation" id=2]
+resource_name = "WalkBack"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 2 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 6 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 4 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep"
+} ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.5, 0 )
+texture = ExtResource( 2 )
+hframes = 8
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0291443, 3.39354 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
+smoothing_speed = 7.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/WalkBack = SubResource( 2 )
+anims/WalkFront = SubResource( 3 )
+anims/WalkLeft = SubResource( 4 )
+anims/WalkRight = SubResource( 5 )
+
+[node name="Footsteps" type="Node2D" parent="."]
+
+[node name="Footsteps_Snow_01" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource( 4 )
+volume_db = -6.33
+
+[node name="Footsteps_Snow_02" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource( 6 )
+volume_db = -5.426
+
+[node name="Footsteps_Snow_03" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource( 8 )
+volume_db = -8.14
+
+[node name="Footsteps_Snow_04" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource( 3 )
+volume_db = -9.496
+
+[node name="Footsteps_Snow_05" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource( 7 )
+volume_db = -8.591
+
+[node name="Footsteps_Snow_06" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource( 5 )
+volume_db = -5.878
+
+[node name="FootstepCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="FootstepCooldown" to="." method="_on_FootstepCooldown_timeout"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/firewood_loop.wav-3d4e73ebf0658c611e9624c52cd2352f.sample"
+
+[deps]
+
+source_file="res://assets/audio/firewood_loop.wav"
+dest_files=[ "res://.import/firewood_loop.wav-3d4e73ebf0658c611e9624c52cd2352f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

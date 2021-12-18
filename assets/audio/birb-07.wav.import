@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/birb-07.wav-d6cec08741b36191741e227fa63ff412.sample"
+
+[deps]
+
+source_file="res://assets/audio/birb-07.wav"
+dest_files=[ "res://.import/birb-07.wav-d6cec08741b36191741e227fa63ff412.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

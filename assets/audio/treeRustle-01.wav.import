@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/treeRustle-01.wav-ccc37ab2c62fb13f8e38101f7f86a861.sample"
+
+[deps]
+
+source_file="res://assets/audio/treeRustle-01.wav"
+dest_files=[ "res://.import/treeRustle-01.wav-ccc37ab2c62fb13f8e38101f7f86a861.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
