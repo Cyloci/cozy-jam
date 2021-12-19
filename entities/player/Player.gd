@@ -7,6 +7,7 @@ export (int) var speed = 75
 var velocity = Vector2()
 var direction = "Front"
 var footstep_cooldown_active = false
+var interactable = null
 
 func get_input():
 	velocity = Vector2()
@@ -25,6 +26,9 @@ func get_input():
 	velocity = velocity.normalized() * speed
 	$AnimationPlayer.play("Walk" + direction)
 
+	if Input.is_action_just_pressed("interact") and interactable != null:
+		interactable.interact(self)
+
 func _physics_process(_delta):
 	get_input()
 	velocity = move_and_slide(velocity)
@@ -35,6 +39,9 @@ func play_footstep():
 	Global.get_random_child($Footsteps).play()
 	$FootstepCooldown.start()
 	footstep_cooldown_active = true
-	
+
 func _on_FootstepCooldown_timeout():
 	footstep_cooldown_active = false
+
+func set_interactable(entity):
+	interactable = entity

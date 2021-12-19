@@ -58,13 +58,5 @@ func _on_WanderTimer_timeout():
 	target_position = start_position + random_delta_vector
 	state = WANDER
 
-func _on_Area2D_body_entered(body):
-	if not body is Player:
-		return
-	$Icons.frame = 2
-	$Icons.visible = true
-
-func _on_Area2D_body_exited(body):
-	if not body is Player:
-		return
-	$Icons.visible = false
+func interact(_player):
+	print("Hey, I'm an elf")

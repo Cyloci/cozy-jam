@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/sprites/full-tileset.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/icons.png" type="Texture" id=2]
+[ext_resource path="res://features/InteractArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/tree/Tree.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.03431
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 17.8824
+
+[node name="Tree" type="StaticBody2D"]
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 23
+vframes = 4
+frame = 45
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.240921, 10.8592 )
+shape = SubResource( 1 )
+
+[node name="InteractArea" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2( -0.130386, 10.17 )
+shape = SubResource( 2 )
+
+[node name="Icons" type="Sprite" parent="InteractArea"]
+visible = false
+position = Vector2( -9.81933, -10.0533 )
+texture = ExtResource( 2 )
+hframes = 16
+vframes = 8
+frame = 2

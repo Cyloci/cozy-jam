@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://entities/elf/Elf.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/elf.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/icons.png" type="Texture" id=3]
+[ext_resource path="res://features/InteractArea.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.96684
@@ -113,6 +114,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=4]
+radius = 12.5512
 
 [node name="Elf" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -142,18 +144,17 @@ hframes = 4
 vframes = 2
 frame = 5
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="InteractArea" parent="." instance=ExtResource( 4 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 shape = SubResource( 4 )
 
-[node name="Icons" type="Sprite" parent="."]
+[node name="Icons" type="Sprite" parent="InteractArea"]
 visible = false
-position = Vector2( -4.63626, -6.33864 )
+position = Vector2( -6.97851, -8.42994 )
 texture = ExtResource( 3 )
 hframes = 16
 vframes = 8
+frame = 2
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_WanderTimer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/sprites/icons.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/full-tileset.png" type="Texture" id=2]
+[ext_resource path="res://entities/candy_cane/CandyCane.gd" type="Script" id=3]
+[ext_resource path="res://features/InteractArea.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.03431
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 14.5145
+
+[node name="CandyCane" type="StaticBody2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 23
+vframes = 8
+frame = 43
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.235802, 5.98606 )
+shape = SubResource( 1 )
+
+[node name="InteractArea" parent="." instance=ExtResource( 4 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2( 0.452271, 5.77358 )
+shape = SubResource( 2 )
+
+[node name="Icons" type="Sprite" parent="InteractArea"]
+visible = false
+position = Vector2( -5.36995, -6.8222 )
+texture = ExtResource( 1 )
+hframes = 16
+vframes = 8
+frame = 2
