@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/full-tileset.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://entities/tree/Tree.tscn" type="PackedScene" id=6]
 [ext_resource path="res://entities/candy_cane/CandyCane.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/dialogue_box/DialogueBox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sprites/snowflake-Sheet.png" type="Texture" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0.014679, 3.17493, 9.96684, 7.98875, 7.85742, 7.98875, 0, 3.93217 )
@@ -247,6 +248,42 @@ points = PoolVector2Array( 11.8607, 30.2821, 4.04645, 30.2821, 4.04645, 25.2587,
 } ]
 4/z_index = 0
 
+[sub_resource type="CanvasItemMaterial" id=16]
+particles_animation = true
+particles_anim_h_frames = 12
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id=17]
+_data = [ Vector2( 0, 0 ), 0.0, 4.25707, 0, 0, Vector2( 0.102564, 0.942568 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.78885, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=18]
+curve = SubResource( 17 )
+
+[sub_resource type="Curve" id=19]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 14.2567 ), 0.0, 0.0, 0, 0, Vector2( 0.237179, -32.5901 ), 0.0, 0.0, 0, 0, Vector2( 0.423077, 30.4729 ), 0.0, 0.0, 0, 0, Vector2( 0.647436, -39.0629 ), 0.0, 0.0, 0, 0, Vector2( 0.846154, 40.2164 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=20]
+curve = SubResource( 19 )
+
+[sub_resource type="ParticlesMaterial" id=21]
+emission_shape = 2
+emission_box_extents = Vector3( 400, 400, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 10, 0 )
+angular_velocity = 211.12
+angular_velocity_random = 0.7
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel_curve = SubResource( 20 )
+angle = 289.7
+angle_random = 1.0
+scale = 0.2
+scale_curve = SubResource( 18 )
+anim_speed = 5.0
+
 [node name="World" type="Node2D"]
 __meta__ = {
 "_edit_lock_": true
@@ -447,7 +484,17 @@ position = Vector2( 31.022, 60.457 )
 position = Vector2( -70.7659, 48.517 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.835294, 0.854902, 1, 1 )
+color = Color( 0.721569, 0.729412, 0.929412, 1 )
 
 [node name="Campfire" parent="." instance=ExtResource( 4 )]
 position = Vector2( -55.2323, 99.7172 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 0.74902, 0.921569, 0.960784, 1 )
+material = SubResource( 16 )
+position = Vector2( -0.439331, -87.8649 )
+amount = 1000
+lifetime = 5.0
+visibility_rect = Rect2( -300, -300, 600, 600 )
+process_material = SubResource( 21 )
+texture = ExtResource( 9 )
