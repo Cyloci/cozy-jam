@@ -24,16 +24,16 @@ frame = 21
 position = Vector2( 0.280617, 3.75323 )
 shape = SubResource( 1 )
 
-[node name="InteractArea" parent="." instance=ExtResource( 3 )]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
-position = Vector2( 0, 3.70322 )
-shape = SubResource( 2 )
-
-[node name="Icons" type="Sprite" parent="InteractArea"]
+[node name="Icons" type="Sprite" parent="."]
 visible = false
 position = Vector2( -9.81933, -10.0533 )
 texture = ExtResource( 4 )
 hframes = 16
 vframes = 8
 frame = 2
+
+[node name="InteractArea" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2( 0, 3.70322 )
+shape = SubResource( 2 )

@@ -27,7 +27,7 @@ func get_input():
 	$AnimationPlayer.play("Walk" + direction)
 
 	if Input.is_action_just_pressed("interact") and interactable != null:
-		interactable.interact(self)
+		interactable.interact_with(self)
 
 func _physics_process(_delta):
 	get_input()
