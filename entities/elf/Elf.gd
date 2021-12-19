@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
 enum {
-	IDLE, 
-	WANDER, 
+	IDLE,
+	WANDER,
+	TALKING,
 }
 
 export var MAX_SPEED = 10
@@ -15,8 +16,10 @@ onready var target_position = global_position
 onready var state = IDLE
 onready var wander_timer = $WanderTimer
 onready var animation = $AnimationPlayer
+onready var dialogue_box = get_node_or_null("DialogueBox")
 
 var velocity = Vector2.ZERO
+var is_interactable = false
 
 var colors = [
 	Color("ff1010"),
@@ -45,12 +48,16 @@ func _physics_process(_delta):
 			velocity = move_and_slide(direction * MAX_SPEED)
 			if global_position.distance_to(target_position) <= WANDER_TARGET_RANGE:
 				state = IDLE
+		TALKING:
+			pass
 	if velocity.x > 0:
 		animation.play("WalkRight")
 	elif velocity.x < 0:
 		animation.play("WalkLeft")
 
 func _on_WanderTimer_timeout():
+	if state == TALKING:
+		return
 	var random_delta_vector = Vector2(
 		rand_range(-WANDER_RANGE, WANDER_RANGE),
 		rand_range(-WANDER_RANGE, WANDER_RANGE)
@@ -58,5 +65,17 @@ func _on_WanderTimer_timeout():
 	target_position = start_position + random_delta_vector
 	state = WANDER
 
-func interact(_player):
-	print("Hey, I'm an elf")
+func can_interact_with(_player):
+	if dialogue_box:
+		$Icons.visible = true
+
+func interact_with(_player):
+	if dialogue_box:
+		dialogue_box.show()
+	state = TALKING
+
+func stop_interaction_with(_player):
+	$Icons.visible = false
+	if dialogue_box:
+		dialogue_box.hide()
+	state = IDLE

@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/dialogue_box/DialogueBox.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/dialogue-box.png" type="Texture" id=2]
+
+[node name="DialogueBox" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+margin_left = 17.3044
+margin_top = 462.784
+margin_right = 1002.3
+margin_bottom = 576.784
+texture = ExtResource( 2 )
+patch_margin_left = 9
+patch_margin_top = 8
+patch_margin_right = 9
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+margin_left = 17.849
+margin_top = 11.0041
+margin_right = 129.849
+margin_bottom = 26.0041
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Elf"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+margin_left = 18.849
+margin_top = 35.0041
+margin_right = 968.849
+margin_bottom = 100.004
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac convallis nibh. Quisque eu sapien porttitor, pulvinar massa a, iaculis erat. Phasellus malesuada elit ac mi dapibus rhoncus. Vestibulum eget fringilla massa. Curabitur vitae augue rutrum, commodo risus a, pellentesque diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam sapien massa, pretium eu ligula id, dapibus sodales nisi. Donec dignissim, justo ac posuere pretium, enim justo lobortis purus, eget rutrum elit ipsum a nibh. Integer eget turpis elit."
+__meta__ = {
+"_edit_use_anchors_": false
+}

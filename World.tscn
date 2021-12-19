@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/full-tileset.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://entities/bush/Bush.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/tree/Tree.tscn" type="PackedScene" id=6]
 [ext_resource path="res://entities/candy_cane/CandyCane.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/dialogue_box/DialogueBox.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0.014679, 3.17493, 9.96684, 7.98875, 7.85742, 7.98875, 0, 3.93217 )
@@ -360,6 +361,8 @@ __meta__ = {
 [node name="Elf" parent="YSort/Elves" instance=ExtResource( 3 )]
 position = Vector2( -102.43, 104.754 )
 
+[node name="DialogueBox" parent="YSort/Elves/Elf" instance=ExtResource( 8 )]
+
 [node name="Elf2" parent="YSort/Elves" instance=ExtResource( 3 )]
 position = Vector2( -9.97354, 102.437 )
 
@@ -447,4 +450,4 @@ position = Vector2( -70.7659, 48.517 )
 color = Color( 0.835294, 0.854902, 1, 1 )
 
 [node name="Campfire" parent="." instance=ExtResource( 4 )]
-position = Vector2( -51.0454, 108.455 )
+position = Vector2( -55.2323, 99.7172 )
