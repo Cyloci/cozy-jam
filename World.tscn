@@ -483,11 +483,11 @@ position = Vector2( 31.022, 60.457 )
 [node name="CandyCane" parent="YSort/CandyCanes" instance=ExtResource( 7 )]
 position = Vector2( -70.7659, 48.517 )
 
+[node name="Campfire" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -55.2323, 99.7172 )
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.721569, 0.729412, 0.929412, 1 )
-
-[node name="Campfire" parent="." instance=ExtResource( 4 )]
-position = Vector2( -55.2323, 99.7172 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 modulate = Color( 0.74902, 0.921569, 0.960784, 1 )
