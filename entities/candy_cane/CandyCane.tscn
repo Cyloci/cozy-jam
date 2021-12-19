@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/sprites/icons.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/full-tileset.png" type="Texture" id=2]
 [ext_resource path="res://entities/candy_cane/CandyCane.gd" type="Script" id=3]
 [ext_resource path="res://features/InteractArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/audio/treeRustle-01.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.03431
@@ -11,11 +12,44 @@ radius = 4.03431
 [sub_resource type="CircleShape2D" id=2]
 radius = 14.5145
 
+[sub_resource type="Animation" id=3]
+resource_name = "Shake"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0, -5.0, 5.0, -5.0, 5.0, -5.0, 5.0, 0.0 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.7,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
 [node name="CandyCane" type="StaticBody2D"]
+position = Vector2( -0.264845, -6.78001 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.264843, 6.14439 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -6 )
 hframes = 23
 vframes = 8
 frame = 43
@@ -37,3 +71,9 @@ frame = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2( 0.452271, 5.77358 )
 shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Shake = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

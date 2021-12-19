@@ -4,7 +4,7 @@ func can_interact_with(_player):
 	$Icons.visible = true
 
 func interact_with(_player):
-	print ("Hey, I'm a bush")
+	$AnimationPlayer.play("Shake")
 
 func stop_interaction_with(_player):
 	$Icons.visible = false
