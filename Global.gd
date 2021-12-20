@@ -16,3 +16,20 @@ func _ready():
 func get_random_child(parent_node):
 	var random_id = randi() % parent_node.get_child_count()
 	return parent_node.get_child(random_id)
+
+enum Item {
+	CRACKER,
+	CHOCOBERRY,
+	SUGAR,
+	MARSHMALLOW,
+}
+
+var items = {
+	Item.CRACKER: 0,
+	Item.CHOCOBERRY: 0,
+	Item.SUGAR: 0,
+	Item.MARSHMALLOW: 0,
+}
+
+func add_item(item, amount=1):
+	items[item] += amount

@@ -66,16 +66,13 @@ func _on_WanderTimer_timeout():
 	state = WANDER
 
 func can_interact_with(_player):
-	if dialogue_box:
-		$Icons.visible = true
+	$Icons.visible = true
 
 func interact_with(_player):
-	if dialogue_box:
-		dialogue_box.show()
+	$DialogueBox.show()
 	state = TALKING
 
 func stop_interaction_with(_player):
 	$Icons.visible = false
-	if dialogue_box:
-		dialogue_box.hide()
+	$DialogueBox.hide()
 	state = IDLE

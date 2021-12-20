@@ -7,8 +7,8 @@
 [ext_resource path="res://entities/bush/Bush.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/tree/Tree.tscn" type="PackedScene" id=6]
 [ext_resource path="res://entities/candy_cane/CandyCane.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ui/dialogue_box/DialogueBox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sprites/snowflake-Sheet.png" type="Texture" id=9]
+[ext_resource path="res://entities/marshmallow_elf/MarshmallowElf.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0.014679, 3.17493, 9.96684, 7.98875, 7.85742, 7.98875, 0, 3.93217 )
@@ -398,8 +398,6 @@ __meta__ = {
 [node name="Elf" parent="YSort/Elves" instance=ExtResource( 3 )]
 position = Vector2( -105.923, 112.164 )
 
-[node name="DialogueBox" parent="YSort/Elves/Elf" instance=ExtResource( 8 )]
-
 [node name="Elf2" parent="YSort/Elves" instance=ExtResource( 3 )]
 position = Vector2( -9.97354, 102.437 )
 
@@ -463,11 +461,11 @@ position = Vector2( 198.527, -146.078 )
 [node name="Elf31" parent="YSort/Elves" instance=ExtResource( 3 )]
 position = Vector2( 157.037, -181.671 )
 
-[node name="Elf32" parent="YSort/Elves" instance=ExtResource( 3 )]
-position = Vector2( 139.925, -242.908 )
-
 [node name="Elf33" parent="YSort/Elves" instance=ExtResource( 3 )]
 position = Vector2( 104.386, -219.159 )
+
+[node name="MarshmallowElf" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 149.998, -250.783 )
 
 [node name="Bushes" type="YSort" parent="YSort"]
 

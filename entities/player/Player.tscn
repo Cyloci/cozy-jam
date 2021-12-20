@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/snowman-sprite.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/audio/fs_snow-02.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/audio/fs_snow-05.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/audio/fs_snow-03.wav" type="AudioStream" id=8]
+[ext_resource path="res://ui/hud/HUD.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.9744
@@ -188,5 +189,7 @@ volume_db = -5.878
 [node name="FootstepCooldown" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource( 9 )]
 
 [connection signal="timeout" from="FootstepCooldown" to="." method="_on_FootstepCooldown_timeout"]
