@@ -3,12 +3,12 @@ extends StaticBody2D
 var depleted = false
 
 func can_interact_with(_player):
-	if depleted:
+	if Global.state.head_elf_state < 2 or depleted:
 		return
 	$Icons.visible = true
 
 func interact_with(_player):
-	if depleted:
+	if Global.state.head_elf_state < 2 or depleted:
 		return
 	$AnimationPlayer.play("Shake")
 

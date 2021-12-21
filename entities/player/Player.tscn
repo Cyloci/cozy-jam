@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/snowman-sprite.png" type="Texture" id=2]
@@ -9,13 +9,74 @@
 [ext_resource path="res://assets/audio/fs_snow-05.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/audio/fs_snow-03.wav" type="AudioStream" id=8]
 [ext_resource path="res://ui/hud/HUD.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sprites/sugar.png" type="Texture" id=10]
+[ext_resource path="res://assets/audio/Pickup_Coin14.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sprites/marshmallow.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/choco-berries.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/cracker.png" type="Texture" id=14]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.9744
 height = 0.997112
 
 [sub_resource type="Animation" id=2]
-resource_name = "WalkBack"
+resource_name = "GiveItem"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 0.8, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "emit_sugar"
+}, {
+"args": [  ],
+"method": "emit_marshmallow"
+}, {
+"args": [  ],
+"method": "give_sugar"
+}, {
+"args": [  ],
+"method": "recieve_marshmallow"
+} ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 1.5, 1.8 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -45,7 +106,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -75,7 +136,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -105,7 +166,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -135,6 +196,15 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="ParticlesMaterial" id=7]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 30.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -142,7 +212,7 @@ script = ExtResource( 1 )
 position = Vector2( -0.5, 0 )
 texture = ExtResource( 2 )
 hframes = 8
-frame = 2
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0291443, 3.39354 )
@@ -155,10 +225,11 @@ smoothing_enabled = true
 smoothing_speed = 7.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/WalkBack = SubResource( 2 )
-anims/WalkFront = SubResource( 3 )
-anims/WalkLeft = SubResource( 4 )
-anims/WalkRight = SubResource( 5 )
+anims/GiveItem = SubResource( 2 )
+anims/WalkBack = SubResource( 3 )
+anims/WalkFront = SubResource( 4 )
+anims/WalkLeft = SubResource( 5 )
+anims/WalkRight = SubResource( 6 )
 
 [node name="Footsteps" type="Node2D" parent="."]
 
@@ -192,4 +263,32 @@ one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource( 9 )]
 
+[node name="SugarParticle" type="Particles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource( 7 )
+texture = ExtResource( 10 )
+
+[node name="MarshmallowParticle" type="Particles2D" parent="."]
+emitting = false
+amount = 1
+process_material = SubResource( 7 )
+texture = ExtResource( 12 )
+
+[node name="ChocoberryParticle" type="Particles2D" parent="."]
+emitting = false
+amount = 1
+process_material = SubResource( 7 )
+texture = ExtResource( 13 )
+
+[node name="CrackerParticle" type="Particles2D" parent="."]
+emitting = false
+amount = 1
+process_material = SubResource( 7 )
+texture = ExtResource( 14 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="FootstepCooldown" to="." method="_on_FootstepCooldown_timeout"]

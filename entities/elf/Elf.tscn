@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://entities/elf/Elf.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/elf.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/icons.png" type="Texture" id=3]
 [ext_resource path="res://features/InteractArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/dialogue_box/DialogueBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/audio/Pickup_Coin14.wav" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.96684
@@ -158,5 +159,8 @@ frame = 2
 shape = SubResource( 4 )
 
 [node name="DialogueBox" parent="." instance=ExtResource( 5 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_WanderTimer_timeout"]

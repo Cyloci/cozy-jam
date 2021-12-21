@@ -69,8 +69,14 @@ func can_interact_with(_player):
 	$Icons.visible = true
 
 func interact_with(_player):
-	$DialogueBox.show()
-	state = TALKING
+	if $DialogueBox.is_shown():
+		$DialogueBox.hide()
+		state = IDLE
+	else:
+		$DialogueBox.display(name, Global.get_message(name))
+		$DialogueBox.show()
+		$AudioStreamPlayer.play()
+		state = TALKING
 
 func stop_interaction_with(_player):
 	$Icons.visible = false
